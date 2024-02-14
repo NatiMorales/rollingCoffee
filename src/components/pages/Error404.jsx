@@ -5,7 +5,7 @@ const Error404 = () => {
         <section className="mainSection text-center">
         <img src={error} alt="error 404" />
         <div>
-        <Button variant='primary' >Volver al inicio</Button>
+        <Button variant='success' >Volver al inicio</Button>
 
         </div>
     </section>
