@@ -1,0 +1,22 @@
+{
+    "productos":[
+        {
+            "id": "1",
+            "nombreProducto":"café",
+            "precio": 1500,
+            "categoria": "Infusiones",
+            "descripcionBreve":"café rico",
+            "descripcionAmplia": "café rico con mas detalles",
+            "imagen": "url"
+        },
+        {
+            "id": "2",
+            "nombreProducto":"té",
+            "precio": 1000,
+            "categoria": "Infusiones",
+            "descripcionBreve":"té rico",
+            "descripcionAmplia": "té rico con mas detalles",
+            "imagen": "url"
+        }
+    ]
+}
