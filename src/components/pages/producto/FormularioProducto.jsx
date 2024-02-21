@@ -1,15 +1,30 @@
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { crearProductoAPI } from "../../../helpers/queries";
-
+import Swal from "sweetalert2";
 
 const FormularioProducto = () => {
   const {register, handleSubmit, formState:{errors}} = useForm();
   
-  const productoValidado = (producto) => {
+  const productoValidado = async(producto) => {
     console.log(producto);
     //solicitar a la api guardar un producto nuevo
-    crearProductoAPI(producto);
+    const respuesta = await crearProductoAPI(producto);
+    if(respuesta.status === 201){
+      //se creo el producto
+      Swal.fire({
+        title: "Producto creado",
+        text: `El producto "${producto.nombreProducto}" fue creado correctamente`,
+        icon: "success"
+      });
+      reset();
+    }else{
+      Swal.fire({
+        title: "Ocurrio un error",
+        text: `El producto "${producto.nombreProducto}" no pudo ser creado. Intente esta operacion en unos minutos`,
+        icon: "error"
+      });
+    }
   }
   
   return (
