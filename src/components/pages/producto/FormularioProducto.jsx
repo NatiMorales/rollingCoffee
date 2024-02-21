@@ -76,9 +76,9 @@ const FormularioProducto = () => {
         <Form.Group className="mb-3" controlId="formPrecio">
           <Form.Label>Categoría*</Form.Label>
           <Form.Select>
-            {...register("categoria",{
-              required: "La categoria es obligatoria",
-            })}
+          {/* {...register("categoria", {
+               required: "La categoria es obligatoria",
+              })} */}
             <option value="">Seleccione una opcion</option>
             <option value="Infusiones">Infusiones</option>
             <option value="Batidos">Batidos</option>
@@ -86,7 +86,7 @@ const FormularioProducto = () => {
             <option value="salado">Salado</option>
           </Form.Select>
           <Form.Text className="text-danger">
-             {errors.categoria?.message}
+             {/* {errors.categoria?.message} */} error
           </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formImagen">
