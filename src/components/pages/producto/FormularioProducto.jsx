@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { crearProductoAPI } from "../../../helpers/queries";
 import Swal from "sweetalert2";
 
-const FormularioProducto = () => {
+const FormularioProducto = ({editar}) => {
   const {
     register,
     handleSubmit,
@@ -13,6 +13,12 @@ const FormularioProducto = () => {
 
   const productoValidado = async (producto) => {
     console.log(producto);
+    if(editar){
+      //agregar la logica de editar
+      console.log("aqui tengo que editar");
+    }else{
+      
+    }
     //solicitar a la api guardar un producto nuevo
     const respuesta = await crearProductoAPI(producto);
     if (respuesta.status === 201) {
