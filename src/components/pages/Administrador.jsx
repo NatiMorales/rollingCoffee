@@ -1,4 +1,4 @@
-import { Button, Table } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 import ItemProducto from "./producto/ItemProducto";
 import { useEffect, useState } from "react";
 import { leerProductosAPI } from "../../helpers/queries";
@@ -43,7 +43,7 @@ const consultarAPI = async() => {
         </thead>
         <tbody>
           {
-            productos.map((producto)=> <ItemProducto key={producto.id} producto={producto}></ItemProducto>)
+            productos.map((producto)=> <ItemProducto key={producto.id} producto={producto} setProductos={setProductos}></ItemProducto>)
           }
           
         </tbody>

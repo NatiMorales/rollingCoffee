@@ -4,29 +4,34 @@ import { crearProductoAPI } from "../../../helpers/queries";
 import Swal from "sweetalert2";
 
 const FormularioProducto = () => {
-  const {register, handleSubmit, formState:{errors}} = useForm();
-  
-  const productoValidado = async(producto) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset
+  } = useForm();
+
+  const productoValidado = async (producto) => {
     console.log(producto);
     //solicitar a la api guardar un producto nuevo
     const respuesta = await crearProductoAPI(producto);
-    if(respuesta.status === 201){
+    if (respuesta.status === 201) {
       //se creo el producto
       Swal.fire({
         title: "Producto creado",
         text: `El producto "${producto.nombreProducto}" fue creado correctamente`,
-        icon: "success"
+        icon: "success",
       });
       reset();
-    }else{
+    } else {
       Swal.fire({
         title: "Ocurrio un error",
         text: `El producto "${producto.nombreProducto}" no pudo ser creado. Intente esta operacion en unos minutos`,
-        icon: "error"
+        icon: "error",
       });
     }
-  }
-  
+  };
+
   return (
     <section className="container mainSection">
       <h1 className="display-4 mt-5">Nuevo producto</h1>
@@ -39,14 +44,16 @@ const FormularioProducto = () => {
             placeholder="Ej: Cafe"
             {...register("nombreProducto", {
               required: "El nombre del producto es obligatorio",
-              minLength:{
-                value:2,
-                message: "El nombre del producto debe tener como minimo 2 caracteres"
+              minLength: {
+                value: 2,
+                message:
+                  "El nombre del producto debe tener como minimo 2 caracteres",
               },
-              maxLength:{
-                value:20,
-                message: "El nombre del producto debe tener como maximo 20 caracteres"
-              }
+              maxLength: {
+                value: 20,
+                message:
+                  "El nombre del producto debe tener como maximo 20 caracteres",
+              },
             })}
           />
           <Form.Text className="text-danger">
@@ -60,32 +67,32 @@ const FormularioProducto = () => {
             placeholder="Ej: 50"
             {...register("precio", {
               required: "El precio del producto es obligatorio",
-              min:{
-                value:1,
-                message: "El precio debe tener un valor minimo de 1"
+              min: {
+                value: 1,
+                message: "El precio debe tener un valor minimo de 1",
               },
-              max:{
-                value:100000,
-                message: "El precio debe tener un valor maximo de 100000"
-              }
+              max: {
+                value: 100000,
+                message: "El precio debe tener un valor maximo de 100000",
+              },
             })}
           />
           <Form.Text className="text-danger">
-          {errors.precio?.message}
+            {errors.precio?.message}
           </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formImagen">
           <Form.Label>Imagen URL*</Form.Label>
           <Form.Control
-             type="text"
-             placeholder="Ej: https://www.pexels.com/es-es/vans-en-blanco-y-negro-fuera-de-la-decoracion-para-colgar-en-la-pared-1230679/"
-             {...register("imagen", {
-               required: "La imagen es obligatoria",
-               pattern: {
-                 value: /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|gif|png)/,
-                 message: "Debe ingresar una URL valida (jpg|jpeg|gif|png)",
-               },
-             })}
+            type="text"
+            placeholder="Ej: https://www.pexels.com/es-es/vans-en-blanco-y-negro-fuera-de-la-decoracion-para-colgar-en-la-pared-1230679/"
+            {...register("imagen", {
+              required: "La imagen es obligatoria",
+              pattern: {
+                value: /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|gif|png)/,
+                message: "Debe ingresar una URL valida (jpg|jpeg|gif|png)",
+              },
+            })}
           />
           <Form.Text className="text-danger">
             {errors.imagen?.message}
@@ -93,10 +100,11 @@ const FormularioProducto = () => {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formPrecio">
           <Form.Label>Categoría*</Form.Label>
-          <Form.Select>
-          {/* {...register("categoria", {
-               required: "La categoria es obligatoria",
-              })} */}
+          <Form.Select
+            {...register("categoria", {
+              required: "La categoria es obligatoria",
+            })}
+          >
             <option value="">Seleccione una opcion</option>
             <option value="Infusiones">Infusiones</option>
             <option value="Batidos">Batidos</option>
@@ -104,7 +112,7 @@ const FormularioProducto = () => {
             <option value="salado">Salado</option>
           </Form.Select>
           <Form.Text className="text-danger">
-             {/* {errors.categoria?.message} */} error
+            {errors.categoria?.message}
           </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formImagen">
@@ -115,18 +123,20 @@ const FormularioProducto = () => {
             as="textarea"
             {...register("descripcionBreve", {
               required: "La descripcion del producto es obligatorio",
-              minLength:{
+              minLength: {
                 value: 5,
-                message: "La descripcion del producto debe tener como minimo 5 caracteres"
+                message:
+                  "La descripcion del producto debe tener como minimo 5 caracteres",
               },
-              maxLength:{
+              maxLength: {
                 value: 50,
-                message: "La descripcion del producto debe tener como maximo 50 caracteres"
-              }
+                message:
+                  "La descripcion del producto debe tener como maximo 50 caracteres",
+              },
             })}
           />
           <Form.Text className="text-danger">
-          {errors.descripcionBreve?.message}
+            {errors.descripcionBreve?.message}
           </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formImagen">
@@ -137,22 +147,24 @@ const FormularioProducto = () => {
             as="textarea"
             {...register("descripcionAmplia", {
               required: "La descripcion del producto es obligatorio",
-              minLength:{
+              minLength: {
                 value: 50,
-                message: "La descripcion del producto debe tener como minimo 50 caracteres"
+                message:
+                  "La descripcion del producto debe tener como minimo 50 caracteres",
               },
-              maxLength:{
+              maxLength: {
                 value: 300,
-                message: "La descripcion del producto debe tener como maximo 300 caracteres"
-              }
+                message:
+                  "La descripcion del producto debe tener como maximo 300 caracteres",
+              },
             })}
           />
           <Form.Text className="text-danger">
             {errors.descripcionAmplia?.message}
           </Form.Text>
         </Form.Group>
-        
-        <Button type="submit" variant='success'>
+
+        <Button type="submit" variant="success">
           Guardar
         </Button>
       </Form>
