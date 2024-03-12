@@ -10,13 +10,22 @@
       "descripcionAmplia": "rico cafe con leche para disfrutar en familia, amigos o pareja"
     },
     {
-      "id": "c290",
-      "nombreProducto": "brownie",
-      "precio": "200",
+      "nombreProducto": "brownie con nutella",
+      "precio": "500",
       "imagen": "https://images.pexels.com/photos/2067396/pexels-photo-2067396.jpeg",
       "categoria": "dulce",
-      "descripcionBreve": "rico brownie",
-      "descripcionAmplia": "brownie hecho con las mejores materias primas del pais, delicioso para merendar una tarde de lluvia"
+      "descripcionBreve": "rico brownie con nutella",
+      "descripcionAmplia": "brownie hecho con las mejores materias primas del pais, delicioso para merendar una tarde de lluvia",
+      "id": "c290"
+    },
+    {
+      "nombreProducto": "te verde",
+      "precio": "900",
+      "imagen": "https://images.pexels.com/photos/13730565/pexels-photo-13730565.jpeg",
+      "categoria": "Infusiones",
+      "descripcionBreve": "rico te verde",
+      "descripcionAmplia": "te verde con propiedades curativas y algo mas jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj",
+      "id": "353a"
     }
   ]
 }
