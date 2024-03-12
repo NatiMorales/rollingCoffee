@@ -1,12 +1,24 @@
 const URL_Productos = import.meta.env.VITE_API_PRODUCTO;
 console.log(URL_Productos);
 
-//solicitud GET
+//GET
 export const leerProductosAPI = async () => {
     try {
         const respuesta = await fetch(URL_Productos);
         const listaProductos = await respuesta.json();
         return listaProductos;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+//GET devuelve un producto
+export const obtenerProductoAPI = async (id) => {
+    try {
+        const respuesta = await fetch(URL_Productos + "/" + id);
+        console.log(respuesta)
+        //const listaProductos = await respuesta.json();
+        return respuesta;
     } catch (error) {
         console.log(error);
     }
