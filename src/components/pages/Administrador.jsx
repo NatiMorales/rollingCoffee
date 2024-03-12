@@ -5,21 +5,20 @@ import { leerProductosAPI } from "../../helpers/queries";
 import { Link } from "react-router-dom";
 
 const Administrador = () => {
-const [productos, setProductos] = useState([]);
+  const [productos, setProductos] = useState([]);
 
-useEffect(()=>{
-  consultarAPI();
-}, [])
+  useEffect(() => {
+    consultarAPI();
+  }, []);
 
-const consultarAPI = async() => {
-  try{
-    const respuesta = await leerProductosAPI();
-    setProductos(respuesta);
-  } catch(error){
-    console.log(error);
-  }
-  
-}
+  const consultarAPI = async () => {
+    try {
+      const respuesta = await leerProductosAPI();
+      setProductos(respuesta);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <section className="container mainSection">
@@ -42,10 +41,13 @@ const consultarAPI = async() => {
           </tr>
         </thead>
         <tbody>
-          {
-            productos.map((producto)=> <ItemProducto key={producto.id} producto={producto} setProductos={setProductos}></ItemProducto>)
-          }
-          
+          {productos.map((producto) => (
+            <ItemProducto
+              key={producto.id}
+              producto={producto}
+              setProductos={setProductos}
+            ></ItemProducto>
+          ))}
         </tbody>
       </Table>
     </section>
